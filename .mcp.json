@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "spirit": {
+      "command": "npx",
+      "args": [
+        "tsx",
+        "src/mcp/index.ts"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  }
+}

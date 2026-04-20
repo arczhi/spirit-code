@@ -1,0 +1,87 @@
+# Spirit 精灵 — 配置模板
+# 复制为 config.local.yaml 并填入真实值
+
+environments:
+  - name: production
+    type: prod
+    elasticsearch:
+      url: "http://localhost:9200"
+      indices: ["app-prod-*"]
+      errorQuery: "level:ERROR OR level:FATAL"
+    logFiles:
+      - "/path/to/prod/logs/"
+    databases:
+      - name: main
+        driverType: mysql
+        host: "localhost"
+        port: 3306
+        username: "root"
+        password: "your-password"
+        dbName: "your_database"
+        readonly: true
+    codeRoots:
+      - name: backend
+        path: "/path/to/backend"
+        gitRemote: "origin"
+        defaultBranch: "master"
+        gitlabProjectPath: "group/subgroup/project"
+      - name: frontend
+        path: "/path/to/frontend"
+        gitRemote: "origin"
+        defaultBranch: "main"
+        gitlabProjectPath: "group/subgroup/project"
+
+  - name: testing
+    type: test
+    elasticsearch:
+      url: "http://localhost:9200"
+      indices: ["app-test-*"]
+      errorQuery: "level:ERROR"
+    logFiles:
+      - "/path/to/test/logs/"
+    databases:
+      - name: main
+        driverType: mysql
+        host: "localhost"
+        port: 3306
+        username: "root"
+        password: "your-password"
+        dbName: "your_database"
+        readonly: false
+    codeRoots:
+      - name: backend
+        path: "/path/to/backend"
+        gitRemote: "origin"
+        defaultBranch: "master"
+        gitlabProjectPath: "group/subgroup/project"
+
+gitlab:
+  url: "http://gitlab.example.com"
+  token: "glpat-xxxxxxxxxxxx"
+  defaultTargetBranch: "test"
+
+claude:
+  apiKey: "sk-xxxxxxxxxxxx"
+  baseUrl: "https://api.anthropic.com/v1"
+  model: "claude-sonnet-4-20250514"
+
+watcher:
+  esPollingInterval: 30
+  dedupeWindow: 86400
+  maxConcurrentFixes: 3
+  riskAutoFix: ["A", "B"]
+  issueWatcher:
+    enabled: true
+    label: "ai-dev"
+    issuePollingInterval: 30000
+    commentPollingInterval: 60000
+    claudeTimeout: 1800000
+    claudeBin: "claude"
+    claudeExtraArgs: []
+    preferEnv: "testing"
+    maxIterations: 20
+    maxConcurrent: 3
+
+storage:
+  type: "sqlite"
+  path: "./data/incidents.db"
