@@ -2,6 +2,8 @@
 
 Spirit 是一个把观测、分析、改码、提 MR 串成闭环的 AI 工作流。
 
+设计思路和提示词，请参考仓库：https://github.com/arczhi/spirit
+
 它现在有三条主线：
 
 - 日志驱动：监听 Elasticsearch 和本地日志，聚合错误，分析根因，低风险自动修复并提交 GitLab MR
