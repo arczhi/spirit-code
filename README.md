@@ -1,5 +1,8 @@
 # Spirit 精灵
 
+![alt text](photos/logo.jpg)
+![alt text](photos/desc.jpg)
+
 Spirit 是一个把观测、分析、改码、提 MR 串成闭环的 AI 工作流。
 
 设计思路和提示词，请参考仓库：https://github.com/arczhi/spirit
